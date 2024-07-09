@@ -14,7 +14,8 @@ colorChecker(
   colorCheckerXY = NULL,
   fixedModel = NULL,
   resampleFactor = NULL,
-  adjustCoords = FALSE
+  adjustCoords = FALSE,
+  quick_validation = FALSE,
 )
 }
 \arguments{
@@ -44,6 +45,9 @@ in the analysis).}
 
 \item{adjustCoords}{Adjust landmark coordinates in case they are reversed compared to pixel
 coordinates (default = FALSE).}
+
+\item{quick_validation}{If TRUE, will not ask to confirm to continue and save between images (default=FALSE}.}
+
 }
 \value{
 Calibrated image(s) ('filename_calibrated.jpg')
