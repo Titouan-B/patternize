@@ -17,7 +17,8 @@
 #' @param resampleFactor Integer for downsampling used by \code{\link{redRes}}.
 #' @param adjustCoords Adjust landmark coordinates in case they are reversed compared to pixel
 #'    coordinates (default = FALSE).
-#'
+#' @param quick_validation If TRUE, does not ask to press enter after each image.
+#' 
 #' @return  Calibrated image(s) ('filename_calibrated.jpg')
 #'
 #' @export
@@ -36,7 +37,8 @@ colorChecker <- function(IDlist,
                          colorCheckerXY = NULL,
                          fixedModel = NULL,
                          resampleFactor = NULL,
-                         adjustCoords = FALSE){
+                         adjustCoords = FALSE,
+                         quick_validation = FALSE){
 
   prop <- 1- patchSize
 
@@ -424,7 +426,7 @@ colorChecker <- function(IDlist,
 
 
 
-        if(all(c(fixedCorners == FALSE, is.null(fixedModel)))){
+        if(all(c(quick_validation == FALSE, fixedCorners == FALSE, is.null(fixedModel)))){
           todo <- readline(prompt="Press [enter] to continue and save image >>> ")
         }
       # }
@@ -775,7 +777,7 @@ colorChecker <- function(IDlist,
         plot(imCal)
 
 
-        if(all(c(fixedCorners == FALSE, is.null(fixedModel)))){
+        if(all(c(quick_validation == FALSE, fixedCorners == FALSE, is.null(fixedModel)))){
           todo <- readline(prompt="Press [enter] to continue and save image >>> ")
         }
       }
